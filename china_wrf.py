@@ -25,8 +25,8 @@ import sys
 FSO_HOME='/home/zwtd/FSO'
 
 os.chdir(FSO_HOME)
-
 CURR_DATE=2018101600
+SINGULARITYENV_NPE={{ 12 }}
 
 ###STEP1 Check gfs###
 
@@ -34,8 +34,8 @@ os.system(singularity exec -e -B china_FSO:/FSO3.4 -B china_working:/gjx_working
  
 ###STEP2 check obs###
 
-os.system(singularity exec -e -B china_FSO:/FSO3.4 -B china_working:/gjx_working -B china_static:/gjx_static -B /data1/input/little_r:/little_r fso3.simg ./scripts/wrf_obsproc.py)
+os.system(singularity exec -e -B china_FSO:/FSO3.4 -B china_working:/gjx_working -B china_static:/gjx_static -B /home/zwtd/FSO/little_r:/little_r fso3.simg ./scripts/wrf_obsproc.py)
 
-###STEp3 RUN WPS ###
+###STEP3 RUN WPS ###
 
-os.system(singularity exec -e -B china_FSO:/FSO3.4 -B china_working:/gjx_working -B china_static:/gjx_static -B /home/data/raw/gfs:/gfs fso3.simg ./scripts/wrf_wps.py)
+###os.system(singularity exec -e -B china_FSO:/FSO3.4 -B china_working:/gjx_working -B china_static:/gjx_static -B /home/data/raw/gfs:/gfs fso3.simg ./scripts/wrf_wps.py)
